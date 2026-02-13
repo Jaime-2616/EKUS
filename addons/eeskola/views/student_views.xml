@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="eeskola_student_list" model="ir.ui.view">
+        <field name="name">eeskola.student.list</field>
+        <field name="model">eeskola.student</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name" string="Izena"/>
+                <field name="surname" string="Abizena"/>
+                <field name="student_age" string="Adina"/>
+                <field name="student_gender" string="Generoa"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="eeskola_student_form" model="ir.ui.view">
+        <field name="name">eeskola.student.form</field>
+        <field name="model">eeskola.student</field>
+        <field name="arch" type="xml">
+            <form string="Ikaslea">
+                <sheet>
+                    <group>
+                        <field name="name" string="Izena"/>
+                        <field name="surname" string="Abizena"/>
+                        <field name="student_age" string="Adina"/>
+                        <field name="student_day_of_birth" string="Jaiotze data"/>
+                        <field name="student_gender" string="Generoa"/>
+                        <field name="student_blood_group" string="Odol taldea"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="eeskola_student_kanban" model="ir.ui.view">
+        <field name="name">eeskola.student.kanban</field>
+        <field name="model">eeskola.student</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click">
+                            <strong>
+                                <field name="name" string="Izena"/>
+                                <field name="surname" string="Abizena"/>
+                            </strong>
+                            <div>Adina: <field name="student_age"/></div>
+                            <div>Generoa: <field name="student_gender"/></div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <!-- ACTION -->
+    <record id="action_eeskola_student" model="ir.actions.act_window">
+        <field name="name">Ikasleak</field>
+        <field name="res_model">eeskola.student</field>
+        <field name="view_mode">list,form,kanban</field>
+    </record>
+
+    <!-- MENU -->
+    <menuitem id="eeskola_menu_root" name="Eeskola"/>
+    <menuitem id="eeskola_menu_students"
+              name="Ikasleak"
+              parent="eeskola_menu_root"
+              action="action_eeskola_student"/>
+
+</odoo>

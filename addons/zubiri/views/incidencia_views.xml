@@ -1,0 +1,39 @@
+<odoo>
+    <!-- Vista de lista -->
+    <record id="view_incidencia_list" model="ir.ui.view">
+        <field name="name">incidencia.list</field>
+        <field name="model">zubiri.incidencia</field>
+        <field name="arch" type="xml">
+            <list string="Incidencias">
+                <field name="name"/>
+                <field name="equipo_id"/>
+                <field name="estado"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Vista de formulario -->
+    <record id="view_incidencia_form" model="ir.ui.view">
+        <field name="name">incidencia.form</field>
+        <field name="model">zubiri.incidencia</field>
+        <field name="arch" type="xml">
+            <form string="Incidencia">
+                <sheet>
+
+                    <!-- Información general -->
+                    <group string="Información General" col="2">
+                        <field name="name"/>
+                        <field name="equipo_id"/>
+                        <field name="estado"/>
+                    </group>
+
+                    <!-- Descripción -->
+                    <group string="Descripción">
+                        <field name="descripcion" nolabel="1" placeholder="Describe aquí la incidencia..."/>
+                    </group>
+
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

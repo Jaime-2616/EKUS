@@ -1,0 +1,81 @@
+<odoo>
+    <!-- Vista de lista -->
+    <record id="view_alumno_list" model="ir.ui.view">
+        <field name="name">alumno.list</field>
+        <field name="model">zubiri.alumno</field>
+        <field name="arch" type="xml">
+            <list string="Alumnos">
+                <field name="name"/>
+                <field name="email"/>
+                <field name="ciclo"/>
+                <field name="asistencia"/>
+                <field name="nota"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Vista de formulario -->
+    <record id="view_alumno_form" model="ir.ui.view">
+        <field name="name">alumno.form</field>
+        <field name="model">zubiri.alumno</field>
+        <field name="arch" type="xml">
+            <form string="Alumno">
+                <sheet>
+                    <!-- Sección de información básica -->
+                    <group string="Información Personal" col="2">
+                        <field name="name" groups="zubiri.group_zubiri_admin,zubiri.group_zubiri_profesor,zubiri.group_zubiri_tecnico"/>
+                        <field name="name" readonly="1" groups="zubiri.group_zubiri_ikasle"/>
+                        <field name="email" groups="zubiri.group_zubiri_admin,zubiri.group_zubiri_profesor,zubiri.group_zubiri_tecnico"/>
+                        <field name="email" readonly="1" groups="zubiri.group_zubiri_ikasle"/>
+                        <field name="user_id" groups="zubiri.group_zubiri_admin,zubiri.group_zubiri_profesor,zubiri.group_zubiri_tecnico"/>
+                    </group>
+
+                    <!-- Sección de información académica -->
+                    <group string="Información Académica" col="2">
+                        <field name="ciclo" groups="zubiri.group_zubiri_admin,zubiri.group_zubiri_profesor,zubiri.group_zubiri_tecnico"/>
+                        <field name="ciclo" readonly="1" groups="zubiri.group_zubiri_ikasle"/>
+                        <field name="profesor_id" groups="zubiri.group_zubiri_admin,zubiri.group_zubiri_profesor,zubiri.group_zubiri_tecnico"/>
+                        <field name="profesor_id" readonly="1" groups="zubiri.group_zubiri_ikasle"/>
+                        <field name="asistencia" groups="zubiri.group_zubiri_admin,zubiri.group_zubiri_profesor,zubiri.group_zubiri_tecnico"/>
+                        <field name="asistencia" readonly="1" groups="zubiri.group_zubiri_ikasle"/>
+                        <field name="nota" groups="zubiri.group_zubiri_admin,zubiri.group_zubiri_profesor,zubiri.group_zubiri_tecnico"/>
+                        <field name="nota" readonly="1" groups="zubiri.group_zubiri_ikasle"/>
+                    </group>
+
+                    <!-- Sección de equipos asignados -->
+                    <group string="Equipos Asignados" col="3">
+                        <field name="ordenador_id" groups="zubiri.group_zubiri_admin,zubiri.group_zubiri_profesor,zubiri.group_zubiri_tecnico"/>
+                        <field name="ordenador_id" readonly="1" groups="zubiri.group_zubiri_ikasle"/>
+                        <field name="pantalla_id" groups="zubiri.group_zubiri_admin,zubiri.group_zubiri_profesor,zubiri.group_zubiri_tecnico"/>
+                        <field name="pantalla_id" readonly="1" groups="zubiri.group_zubiri_ikasle"/>
+                    </group>
+
+                    <!-- Egutegia -->
+                    <notebook>
+                        <page string="Egutegia">
+                            <group col="1">
+                                <field name="event_ids">
+                                    <list string="Ekitaldiak (pertsonalak)" create="true" edit="true" delete="false">
+                                        <field name="name"/>
+                                        <field name="start_datetime"/>
+                                        <field name="end_datetime"/>
+                                        <field name="description"/>
+                                    </list>
+                                </field>
+                                <field name="school_event_ids" readonly="1">
+                                    <list string="Eskolako egutegia" create="false" edit="false" delete="false">
+                                        <field name="name"/>
+                                        <field name="start_datetime"/>
+                                        <field name="end_datetime"/>
+                                        <field name="description"/>
+                                    </list>
+                                </field>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+</odoo>

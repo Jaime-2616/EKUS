@@ -1,0 +1,22 @@
+{
+    'name': 'Zubiri Kudeaketa',
+    'version': '1.0',
+    'summary': 'Ikastetxeko informazioaren kudeaketa integrala',
+    'author': 'Zubiri',
+    'category': 'Education',
+    'depends': ['base'],
+    'data': [
+        'security/groups.xml',
+        'security/rules.xml',
+        'security/ir.model.access.csv',
+        'views/alumno_views.xml',
+        'views/profesor_views.xml',
+        'views/equipo_views.xml',
+        'views/aula_views.xml',
+        'views/incidencia_views.xml',
+        'views/event_views.xml',
+        'views/menu_views.xml',
+    ],
+    'installable': True,
+    'application': True,
+}

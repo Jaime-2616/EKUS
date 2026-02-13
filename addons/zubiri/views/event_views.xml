@@ -1,0 +1,36 @@
+<odoo>
+    <record id="view_event_list" model="ir.ui.view">
+        <field name="name">zubiri.event.list</field>
+        <field name="model">zubiri.event</field>
+        <field name="arch" type="xml">
+            <list string="Ekitaldiak">
+                <field name="name"/>
+                <field name="start_datetime"/>
+                <field name="end_datetime"/>
+                <field name="alumno_id"/>
+                <field name="is_school"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_event_form" model="ir.ui.view">
+        <field name="name">zubiri.event.form</field>
+        <field name="model">zubiri.event</field>
+        <field name="arch" type="xml">
+            <form string="Ekitaldia">
+                <sheet>
+                    <group col="2">
+                        <field name="name"/>
+                        <field name="is_school"/>
+                        <field name="alumno_id"/>
+                        <field name="start_datetime"/>
+                        <field name="end_datetime"/>
+                    </group>
+                    <group>
+                        <field name="description" nolabel="1"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Acciones -->
+    <record id="action_coche" model="ir.actions.act_window">
+        <field name="name">Coches</field>
+        <field name="res_model">coche</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Añadir primer coche
+            </p>
+            <p>
+                Gestiona tu inventario de vehículos.
+            </p>
+        </field>
+    </record>
+    
+    <record id="action_marca" model="ir.actions.act_window">
+        <field name="name">Marcas</field>
+        <field name="res_model">marca</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    
+    <record id="action_mantenimiento" model="ir.actions.act_window">
+        <field name="name">Mantenimientos</field>
+        <field name="res_model">mantenimiento</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Registrar primer mantenimiento
+            </p>
+            <p>
+                Controla el historial de mantenimiento de tus vehículos.
+            </p>
+        </field>
+    </record>
+    
+    <!-- Menús -->
+    <menuitem id="menu_garaje_root" 
+              name="Garaje"
+              sequence="100"
+              web_icon="mi_primer_modulo,static/description/icon.png"/>
+    
+    <menuitem id="menu_coches" 
+              name="Coches"
+              parent="menu_garaje_root"
+              action="action_coche"
+              sequence="10"/>
+    
+    <menuitem id="menu_marcas" 
+              name="Marcas"
+              parent="menu_garaje_root"
+              action="action_marca"
+              sequence="20"/>
+    
+    <menuitem id="menu_mantenimientos" 
+              name="Mantenimientos"
+              parent="menu_garaje_root"
+              action="action_mantenimiento"
+              sequence="30"/>
+</odoo>

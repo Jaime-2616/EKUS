@@ -1,0 +1,36 @@
+<odoo>
+    <!-- Vista de lista -->
+    <record id="view_profesor_list" model="ir.ui.view">
+        <field name="name">profesor.list</field>
+        <field name="model">zubiri.profesor</field>
+        <field name="arch" type="xml">
+            <list string="Profesores">
+                <field name="name"/>
+                <field name="email"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Vista de formulario -->
+    <record id="view_profesor_form" model="ir.ui.view">
+        <field name="name">profesor.form</field>
+        <field name="model">zubiri.profesor</field>
+        <field name="arch" type="xml">
+            <form string="Profesor">
+                <sheet>
+                    <!-- Sección de información personal -->
+                    <group string="Información Personal" col="2">
+                        <field name="name"/>
+                        <field name="email"/>
+                        <field name="user_id" groups="zubiri.group_zubiri_admin"/>
+                    </group>
+
+                    <!-- Sección de alumnos asignados -->
+                    <group string="Alumnos Asignados">
+                        <field name="alumnos_ids" widget="many2many_tags"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

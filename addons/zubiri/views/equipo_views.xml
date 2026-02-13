@@ -1,0 +1,59 @@
+<odoo>
+    <!-- Vista de lista -->
+    <record id="view_equipo_list" model="ir.ui.view">
+        <field name="name">equipo.list</field>
+        <field name="model">zubiri.equipo</field>
+        <field name="arch" type="xml">
+            <list string="Equipos">
+                <field name="name"/>
+                <field name="tipo"/>
+                <field name="aula_id"/>
+                <field name="alumno_id"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Vista de formulario -->
+    <record id="view_equipo_form" model="ir.ui.view">
+        <field name="name">equipo.form</field>
+        <field name="model">zubiri.equipo</field>
+        <field name="arch" type="xml">
+            <form string="Equipo">
+                <sheet>
+
+                    <!-- Información básica -->
+                    <group string="Información del Equipo" col="2">
+                        <field name="name"/>
+                        <field name="tipo"/>
+                    </group>
+
+                    <!-- Asignaciones -->
+                    <group string="Asignación" col="2">
+                        <field name="aula_id"/>
+                        <field name="alumno_id"/>
+                    </group>
+
+                    <!-- Alumnos vinculados desde la ficha de alumno -->
+                    <group string="Ikasleak asignados" col="1">
+                        <field name="alumno_multi_ids" widget="many2many_tags" options="{'no_create': True}" help="Asigna varios ikasleak a este equipo sin desasignar los anteriores."/>
+                        <field name="alumno_ordenador_ids" invisible="tipo != 'ordenador'" readonly="1">
+                            <list string="Ikasleak (ordenagailua)" create="false" edit="false" delete="false">
+                                <field name="name"/>
+                                <field name="email"/>
+                                <field name="ciclo"/>
+                            </list>
+                        </field>
+                        <field name="alumno_pantalla_ids" invisible="tipo != 'pantalla'" readonly="1">
+                            <list string="Ikasleak (pantaila)" create="false" edit="false" delete="false">
+                                <field name="name"/>
+                                <field name="email"/>
+                                <field name="ciclo"/>
+                            </list>
+                        </field>
+                    </group>
+
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

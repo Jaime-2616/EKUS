@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Vista árbol (lista) Mantenimientos -->
+    <record id="view_mantenimiento_tree" model="ir.ui.view">
+        <field name="name">mantenimiento.tree</field>
+        <field name="model">mantenimiento</field>
+        <field name="arch" type="xml">
+            <tree string="Mantenimientos">
+                <field name="fecha"/>
+                <field name="coche_matricula"/>
+                <field name="coche_modelo"/>
+                <field name="tipo"/>
+                <field name="costo" sum="Total Gastos"/>
+                <field name="completado" widget="boolean_button"/>
+            </tree>
+        </field>
+    </record>
+    
+    <!-- Vista formulario Mantenimientos -->
+    <record id="view_mantenimiento_form" model="ir.ui.view">
+        <field name="name">mantenimiento.form</field>
+        <field name="model">mantenimiento</field>
+        <field name="arch" type="xml">
+            <form string="Mantenimiento">
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name"/>
+                        </h1>
+                        <h3>
+                            <field name="coche_id.nombre_completo"/>
+                        </h3>
+                    </div>
+                    
+                    <group>
+                        <group>
+                            <field name="coche_id"/>
+                            <field name="fecha"/>
+                            <field name="kilometros"/>
+                            <field name="tipo"/>
+                        </group>
+                        <group>
+                            <field name="costo"/>
+                            <field name="taller"/>
+                            <field name="completado"/>
+                        </group>
+                    </group>
+                    
+                    <group string="Descripción del Trabajo">
+                        <field name="descripcion" nolabel="1"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    
+    <!-- Vista búsqueda Mantenimientos -->
+    <record id="view_mantenimiento_search" model="ir.ui.view">
+        <field name="name">mantenimiento.search</field>
+        <field name="model">mantenimiento</field>
+        <field name="arch" type="xml">
+            <search string="Buscar Mantenimientos">
+                <field name="coche_matricula"/>
+                <field name="tipo"/>
+                <separator/>
+                <filter name="ultimo_mes" string="Último Mes" domain="[('fecha', '>=', (context_today() - relativedelta(months=1)).strftime('%%Y-%%m-%%d'))]"/>
+                <filter name="pendientes" string="Pendientes" domain="[('completado', '=', False)]"/>
+                <separator/>
+                <group expand="0" string="Agrupar por">
+                    <filter string="Tipo" name="grupo_tipo" context="{'group_by': 'tipo'}"/>
+                    <filter string="Coche" name="grupo_coche" context="{'group_by': 'coche_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+</odoo>

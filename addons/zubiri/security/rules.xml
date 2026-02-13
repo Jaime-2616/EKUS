@@ -1,0 +1,23 @@
+<odoo>
+    <record id="zubiri_rule_alumno_self" model="ir.rule">
+        <field name="name">Alumno own record</field>
+        <field name="model_id" ref="model_zubiri_alumno"/>
+        <field name="groups" eval="[(4, ref('zubiri.group_zubiri_ikasle'))]"/>
+        <field name="domain_force">['|', ("user_id", "=", user.id), ("email", "=", user.login)]</field>
+        <field name="perm_read" eval="1"/>
+        <field name="perm_write" eval="0"/>
+        <field name="perm_create" eval="0"/>
+        <field name="perm_unlink" eval="0"/>
+    </record>
+
+    <record id="zubiri_rule_event_student" model="ir.rule">
+        <field name="name">Event student visibility</field>
+        <field name="model_id" ref="model_zubiri_event"/>
+        <field name="groups" eval="[(4, ref('zubiri.group_zubiri_ikasle'))]"/>
+        <field name="domain_force">['|', ('alumno_id.user_id', '=', user.id), ('is_school', '=', True)]</field>
+        <field name="perm_read" eval="1"/>
+        <field name="perm_write" eval="1"/>
+        <field name="perm_create" eval="1"/>
+        <field name="perm_unlink" eval="0"/>
+    </record>
+</odoo>

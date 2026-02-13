@@ -1,0 +1,21 @@
+<odoo>
+    <record id="group_zubiri_admin" model="res.groups">
+        <field name="name">Administratzailea</field>
+        <field name="category_id" ref="base.module_category_administration"/>
+    </record>
+
+    <record id="group_zubiri_profesor" model="res.groups">
+        <field name="name">Irakasle</field>
+        <field name="category_id" ref="base.module_category_administration"/>
+    </record>
+
+    <record id="group_zubiri_tecnico" model="res.groups">
+        <field name="name">Mantentze tekniko</field>
+        <field name="category_id" ref="base.module_category_administration"/>
+    </record>
+
+    <record id="group_zubiri_ikasle" model="res.groups">
+        <field name="name">Ikasle</field>
+        <field name="category_id" ref="base.module_category_administration"/>
+    </record>
+</odoo>

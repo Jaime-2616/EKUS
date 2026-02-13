@@ -1,0 +1,35 @@
+<odoo>
+    <!-- Vista de lista -->
+    <record id="view_aula_list" model="ir.ui.view">
+        <field name="name">aula.list</field>
+        <field name="model">zubiri.aula</field>
+        <field name="arch" type="xml">
+            <list string="Aulas">
+                <field name="name"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Vista de formulario -->
+    <record id="view_aula_form" model="ir.ui.view">
+        <field name="name">aula.form</field>
+        <field name="model">zubiri.aula</field>
+        <field name="arch" type="xml">
+            <form string="Aula">
+                <sheet>
+
+                    <!-- Información básica -->
+                    <group string="Información del Aula" col="2">
+                        <field name="name"/>
+                    </group>
+
+                    <!-- Equipos del aula -->
+                    <group string="Equipos Asignados">
+                        <field name="equipo_ids" widget="many2many_tags"/>
+                    </group>
+
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

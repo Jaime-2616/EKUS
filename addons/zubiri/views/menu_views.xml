@@ -1,0 +1,50 @@
+<odoo>
+    <record id="zubiri_alumno_action" model="ir.actions.act_window">
+        <field name="name">Alumnos</field>
+        <field name="res_model">zubiri.alumno</field>
+        <field name="view_mode">list,form</field>
+    </record>
+    <record id="zubiri_profesor_action" model="ir.actions.act_window">
+        <field name="name">Profesores</field>
+        <field name="res_model">zubiri.profesor</field>
+        <field name="view_mode">list,form</field>
+    </record>
+    <record id="zubiri_equipo_action" model="ir.actions.act_window">
+        <field name="name">Equipos</field>
+        <field name="res_model">zubiri.equipo</field>
+        <field name="view_mode">list,form</field>
+    </record>
+    <record id="zubiri_aula_action" model="ir.actions.act_window">
+        <field name="name">Aulas</field>
+        <field name="res_model">zubiri.aula</field>
+        <field name="view_mode">list,form</field>
+    </record>
+    <record id="zubiri_incidencia_action" model="ir.actions.act_window">
+        <field name="name">Incidencias</field>
+        <field name="res_model">zubiri.incidencia</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <record id="zubiri_event_action" model="ir.actions.act_window">
+        <field name="name">Egutegia</field>
+        <field name="res_model">zubiri.event</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <record id="zubiri_alumno_self_action" model="ir.actions.act_window">
+        <field name="name">Nire profila</field>
+        <field name="res_model">zubiri.alumno</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <menuitem id="zubiri_menu_root" name="Zubiri Kudeaketa"/>
+    <menuitem id="zubiri_menu_alumnos" name="Alumnos" parent="zubiri_menu_root" action="zubiri_alumno_action" groups="zubiri.group_zubiri_admin,zubiri.group_zubiri_profesor,zubiri.group_zubiri_tecnico"/>
+    <menuitem id="zubiri_menu_profesores" name="Profesores" parent="zubiri_menu_root" action="zubiri_profesor_action" groups="zubiri.group_zubiri_admin,zubiri.group_zubiri_profesor,zubiri.group_zubiri_tecnico"/>
+    <menuitem id="zubiri_menu_equipos" name="Equipos" parent="zubiri_menu_root" action="zubiri_equipo_action" groups="zubiri.group_zubiri_admin,zubiri.group_zubiri_profesor,zubiri.group_zubiri_tecnico"/>
+    <menuitem id="zubiri_menu_aulas" name="Aulas" parent="zubiri_menu_root" action="zubiri_aula_action" groups="zubiri.group_zubiri_admin,zubiri.group_zubiri_profesor,zubiri.group_zubiri_tecnico"/>
+    <menuitem id="zubiri_menu_incidencias" name="Incidencias" parent="zubiri_menu_root" action="zubiri_incidencia_action" groups="zubiri.group_zubiri_admin,zubiri.group_zubiri_profesor,zubiri.group_zubiri_tecnico"/>
+
+    <!-- Menús para Ikasle -->
+    <menuitem id="zubiri_menu_student_profile" name="Nire profila" parent="zubiri_menu_root" action="zubiri_alumno_self_action" groups="zubiri.group_zubiri_ikasle"/>
+    <menuitem id="zubiri_menu_student_events" name="Egutegia" parent="zubiri_menu_root" action="zubiri_event_action" groups="zubiri.group_zubiri_ikasle"/>
+</odoo>

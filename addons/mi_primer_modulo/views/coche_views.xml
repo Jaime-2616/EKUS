@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Vista árbol (lista) Coches -->
+    <record id="view_coche_tree" model="ir.ui.view">
+        <field name="name">coche.tree</field>
+        <field name="model">coche</field>
+        <field name="arch" type="xml">
+            <tree string="Coches">
+                <field name="matricula"/>
+                <field name="marca_id"/>
+                <field name="modelo"/>
+                <field name="color"/>
+                <field name="estado" widget="badge" decoration-info="estado == 'nuevo'" decoration-warning="estado == 'reparacion'" decoration-danger="estado == 'vendido'"/>
+                <field name="kilometraje" sum="Total Kilómetros"/>
+                <field name="disponible" widget="boolean_button"/>
+                <field name="precio_venta" sum="Valor Total"/>
+            </tree>
+        </field>
+    </record>
+    
+    <!-- Vista formulario Coches -->
+    <record id="view_coche_form" model="ir.ui.view">
+        <field name="name">coche.form</field>
+        <field name="model">coche</field>
+        <field name="arch" type="xml">
+            <form string="Coche">
+                <header>
+                    <button name="toggle_disponible" type="object" 
+                            class="oe_highlight" 
+                            attrs="{'invisible': [('disponible', '=', True)]}"
+                            string="Marcar como Disponible"/>
+                    <button name="toggle_disponible" type="object" 
+                            attrs="{'invisible': [('disponible', '=', False)]}"
+                            string="Marcar como No Disponible"/>
+                    <field name="disponible" widget="boolean_button" invisible="1"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="nombre_completo"/>
+                        </h1>
+                        <h3>
+                            Estado: <field name="estado"/>
+                        </h3>
+                    </div>
+                    
+                    <group string="Identificación">
+                        <field name="matricula"/>
+                        <field name="vin"/>
+                        <field name="marca_id"/>
+                        <field name="modelo"/>
+                        <field name="color"/>
+                    </group>
+                    
+                    <group string="Especificaciones Técnicas">
+                        <field name="año_fabricacion"/>
+                        <field name="años_antiguedad" readonly="1"/>
+                        <field name="tipo_combustible"/>
+                        <field name="potencia"/>
+                        <field name="cilindrada"/>
+                        <field name="kilometraje"/>
+                    </group>
+                    
+                    <group string="Estado y Precios">
+                        <field name="estado"/>
+                        <field name="disponible"/>
+                        <field name="fecha_compra"/>
+                        <field name="precio_compra"/>
+                        <field name="precio_venta"/>
+                    </group>
+                    
+                    <notebook>
+                        <page string="Mantenimiento">
+                            <field name="mantenimiento_ids">
+                                <tree>
+                                    <field name="fecha"/>
+                                    <field name="tipo"/>
+                                    <field name="descripcion"/>
+                                    <field name="costo" sum="Total Gastado"/>
+                                    <field name="completado"/>
+                                </tree>
+                                <form>
+                                    <group>
+                                        <field name="fecha"/>
+                                        <field name="tipo"/>
+                                        <field name="kilometros"/>
+                                        <field name="costo"/>
+                                        <field name="completado"/>
+                                    </group>
+                                    <group>
+                                        <field name="descripcion" nolabel="1"/>
+                                    </group>
+                                </form>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    
+    <!-- Vista búsqueda Coches -->
+    <record id="view_coche_search" model="ir.ui.view">
+        <field name="name">coche.search</field>
+        <field name="model">coche</field>
+        <field name="arch" type="xml">
+            <search string="Buscar Coches">
+                <field name="matricula"/>
+                <field name="modelo"/>
+                <field name="marca_id"/>
+                <separator/>
+                <filter name="disponibles" string="Disponibles" domain="[('disponible', '=', True)]"/>
+                <filter name="nuevos" string="Nuevos" domain="[('estado', '=', 'nuevo')]"/>
+                <filter name="gasolina" string="Gasolina" domain="[('tipo_combustible', '=', 'gasolina')]"/>
+                <separator/>
+                <group expand="0" string="Agrupar por">
+                    <filter string="Marca" name="grupo_marca" context="{'group_by': 'marca_id'}"/>
+                    <filter string="Estado" name="grupo_estado" context="{'group_by': 'estado'}"/>
+                    <filter string="Combustible" name="grupo_combustible" context="{'group_by': 'tipo_combustible'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+</odoo>
