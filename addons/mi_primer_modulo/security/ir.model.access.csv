@@ -1,7 +1,0 @@
-id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_marca_user,marca.user,model_marca,base.group_user,1,1,1,0
-access_marca_manager,marca.manager,model_marca,base.group_system,1,1,1,1
-access_coche_user,coche.user,model_coche,base.group_user,1,1,1,0
-access_coche_manager,coche.manager,model_coche,base.group_system,1,1,1,1
-access_mantenimiento_user,mantenimiento.user,model_mantenimiento,base.group_user,1,1,1,0
-access_mantenimiento_manager,mantenimiento.manager,model_mantenimiento,base.group_system,1,1,1,1
